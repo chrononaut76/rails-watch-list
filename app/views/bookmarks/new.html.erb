@@ -1,3 +1,8 @@
 <div class="container mt-3">
   <h1>Create bookmark</h1>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.association :movie, collection: Movie.all %>
+    <%= f.input :comment %>
+    <%= f.submit %>
+  <% end %>
 </div>
