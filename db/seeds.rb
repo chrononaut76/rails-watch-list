@@ -20,7 +20,7 @@ response['results'].each do |r|
   if r['original_language'].eql?('en')
     Movie.create!(title: r['original_title'],
                   overview: r['overview'],
-                  poster_url: "https://image.tmdb.org/t/p/original/#{r['poster_path']}",
+                  poster_url: "https://image.tmdb.org/t/p/w500#{r['poster_path']}",
                   rating: r['vote_average'])
   end
 end
