@@ -1,0 +1,8 @@
+<div class="container mt-3">
+  <h1>All lists</h1>
+  <ol>
+  <% @lists.each do |list| %>
+    <li><%= link_to list.name, show_path(list.id) %></li>
+  <% end %>
+  </ol>
+</div>
