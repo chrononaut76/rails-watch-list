@@ -3,7 +3,10 @@
   <ul>
   <% @list.bookmarks.each do |bookmark| %>
     <% movie = Movie.find(bookmark[:movie_id]) %>
-    <li><%= "#{movie[:title]} - #{bookmark[:comment]}" %></li>
+    <li>
+      <%= "#{movie[:title]} - #{bookmark[:comment]}" %>
+      <%= link_to "Delete", bookmark_path(bookmark), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    </li>
   <% end %>
   </ul>
   <%= link_to "Create bookmark", new_list_bookmark_path(@list) %>
