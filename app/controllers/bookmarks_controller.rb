@@ -6,7 +6,6 @@ class BookmarksController < ApplicationController
   end
 
   def create
-    raise
     @bookmark = Bookmark.new(bookmark_params)
     @bookmark.list = @list
     if @bookmark.save
