@@ -17,7 +17,7 @@ config = JSON.parse(config_serialized)['images']
 
 top_rated_serialized = URI.open('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
                                 'accept' => 'application/json',
-                                'Authorization' => access_token).read
+                                'Authorization' => TMDB_TOKEN).read
 top_rated = JSON.parse(top_rated_serialized)
 
 top_rated['results'].each do |r|
