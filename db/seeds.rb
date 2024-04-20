@@ -10,11 +10,9 @@
 require 'open-uri'
 require 'json'
 
-access_token = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYzY2YzI1YzYwODExYjljZjkwMjViOWIxMDY0N2Q3YyIsInN1YiI6IjY2MjA0NTllM2M0MzQ0MDE3YzA0YmI3NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CLe0TbqCfIiOgpoJ-rwzCH2-X6KY9WL-zYeVxUI3sYc'
-
 config_serialized = URI.open('https://api.themoviedb.org/3/configuration',
                              'accept' => 'application/json',
-                             'Authorization' => access_token).read
+                             'Authorization' => TMDB_TOKEN).read
 config = JSON.parse(config_serialized)['images']
 
 top_rated_serialized = URI.open('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
