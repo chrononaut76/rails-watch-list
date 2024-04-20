@@ -2,6 +2,7 @@
   <h1>Create list</h1>
   <%= simple_form_for @list do |f| %>
     <%= f.input :name %>
+    <%= f.input :photo, as: :file %>
     <%= f.submit %>
     <% end %>
   <%= link_to "Back to lists", lists_path %>
