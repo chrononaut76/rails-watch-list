@@ -11,16 +11,22 @@ require 'open-uri'
 require 'json'
 
 access_token = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzYzY2YzI1YzYwODExYjljZjkwMjViOWIxMDY0N2Q3YyIsInN1YiI6IjY2MjA0NTllM2M0MzQ0MDE3YzA0YmI3NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.CLe0TbqCfIiOgpoJ-rwzCH2-X6KY9WL-zYeVxUI3sYc'
-response_serialized = URI.open('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
-                               'accept' => 'application/json',
-                               'Authorization' => access_token).read
-response = JSON.parse(response_serialized)
 
-response['results'].each do |r|
+config_serialized = URI.open('https://api.themoviedb.org/3/configuration',
+                             'accept' => 'application/json',
+                             'Authorization' => access_token).read
+config = JSON.parse(config_serialized)['images']
+
+top_rated_serialized = URI.open('https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1',
+                                'accept' => 'application/json',
+                                'Authorization' => access_token).read
+top_rated = JSON.parse(top_rated_serialized)
+
+top_rated['results'].each do |r|
   if r['original_language'].eql?('en')
     Movie.create!(title: r['original_title'],
                   overview: r['overview'],
-                  poster_url: "https://image.tmdb.org/t/p/w500#{r['poster_path']}",
+                  poster_url: "#{config['secure_base_url']}#{config['poster_sizes'][4]}#{r['poster_path']}",
                   rating: r['vote_average'])
   end
 end
