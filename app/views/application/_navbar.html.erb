@@ -1,0 +1,15 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+  <div class="container-fluid">
+    <%= tag.span class: 'navbar-brand' do %>
+      <%= image_tag('popcorn_time_icon_by_anthonycy-db388lk.png', width: 40) %>
+    <% end %>
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <%= link_to "My lists", root_path, class: 'nav-link' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "New list", new_list_path, class: 'nav-link' %>
+      </li>
+    </ul>
+  </div>
+</nav>
