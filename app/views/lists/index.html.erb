@@ -7,13 +7,20 @@
   </div>
 </div>
 
-<div class="container mt-3">
-  <h1>All lists</h1>
-  <ol>
-  <% @lists.each do |list| %>x
-    <li>
-      <%= link_to list.name, list_path(list.id) %>
-    </li>
-  <% end %>
-  </ol>
+<div class="container col-8 mt-5">
+  <div class="row">
+    <div class="col-md-4">
+      <h2>My lists</h2>
+    </div>
+    <div class="col-md-4 ms-auto">
+      <%= link_to "Create a movie list",  new_list_path, class: %w[ btn btn-success text-white] %>
+    </div>
+  </div>
+  <div class="row">
+    <ol>
+    <% @lists.each do |list| %>
+      <li><%= link_to list.name, list_path(list.id) %></li>
+    <% end %>
+    </ol>
+  </div>
 </div>
