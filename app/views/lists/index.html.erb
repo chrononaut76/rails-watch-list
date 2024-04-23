@@ -1,10 +1,16 @@
-<%= render "application/navbar" %>
-<%= render "application/banner" %>
+<%= render "shared/navbar" %>
+
+<div class='banner' style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path('movie_theater.jpg') %>);">
+  <div class="container text-center">
+    <h1>Save any kind of movies</h1>
+    <p>Classic</p>
+  </div>
+</div>
 
 <div class="container mt-3">
   <h1>All lists</h1>
   <ol>
-  <% @lists.each do |list| %>
+  <% @lists.each do |list| %>x
     <li>
       <%= link_to list.name, list_path(list.id) %>
     </li>
