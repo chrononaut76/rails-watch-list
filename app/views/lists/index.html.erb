@@ -7,20 +7,20 @@
   </div>
 </div>
 
-<div class="container col-8 mt-5">
-  <div class="row">
-    <div class="col-md-4">
+<div class="container mt-5">
+  <div class="d-flex">
+    <div class="me-auto">
       <h2>My lists</h2>
     </div>
-    <div class="col-md-4 ms-auto">
-      <%= link_to "Create a movie list",  new_list_path, class: %w[ btn btn-success text-white] %>
+    <div>
+      <%= link_to "Create a movie list",  new_list_path, class: %w[ btn btn-success text-white ] %>
     </div>
   </div>
-  <div class="row">
-    <ol>
+  <div class="d-flex">
     <% @lists.each do |list| %>
-      <li><%= link_to list.name, list_path(list.id) %></li>
+      <%= tag.div do %>
+        <%= link_to list.name, list_path(list.id) %>
+      <% end %>
     <% end %>
-    </ol>
   </div>
 </div>
